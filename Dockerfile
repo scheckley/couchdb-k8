@@ -1,4 +1,6 @@
-FROM couchdb:latest
+#FROM couchdb:latest
+
+FROM default-route-openshift-image-registry.apps.ocp.osprey.hartree.stfc.ac.uk/scp012-dxm01/couchdb
 
 # Create a group and user with specific UID and GID, ensuring they own the CouchDB files
 RUN groupadd -g 1000 couchdb && \
