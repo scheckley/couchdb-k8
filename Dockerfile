@@ -1,4 +1,4 @@
-FROM couchdb:latest as couchdb  # Use the official CouchDB image as a base
+FROM couchdb:latest
 
 # Create a non-root user with a specified UID
 RUN addgroup -g 1000 couchdb && \
