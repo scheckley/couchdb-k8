@@ -7,6 +7,9 @@ RUN addgroup -g 1000 couchdb && \
 # Change permissions on the CouchDB directory
 RUN chown -R couchdb:couchdb /opt/couchdb
 
+# default couchdb port
+EXPOSE 5984
+
 # Switch to the non-root user
 USER couchdb
 
