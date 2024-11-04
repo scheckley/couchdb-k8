@@ -1,16 +1,15 @@
 FROM couchdb:latest
 
-# Create a non-root user with a specified UID
-RUN addgroup -g 1000 couchdb && adduser -G couchdb -u 1000 -D couchdb
-
-# Change permissions on the CouchDB directory
-RUN chown -R couchdb:couchdb /opt/couchdb
-
-# default couchdb port
-EXPOSE 5984
+# Create a group and user with specific UID and GID, ensuring they own the CouchDB files
+RUN groupadd -g 1000 couchdb && \
+    useradd -m -u 1000 -g couchdb couchdb && \
+    chown -R couchdb:couchdb /opt/couchdb
 
 # Switch to the non-root user
 USER couchdb
+
+# Expose CouchDB's default port
+EXPOSE 5984
 
 # Start CouchDB
 CMD ["couchdb"]
